@@ -13,4 +13,4 @@ Develop(),
 ],
 )
 
-t("KorelacjaOdległości")
+t("KorelacjaOdleglosci")
