@@ -1,4 +1,4 @@
-function BIN_U(x)
+function bin_U(x)
     Bins = Vector{UInt8}(undef, length(x)) 
     @inbounds @simd for i in eachindex(x) 
         Bins[i] = trunc(UInt8, 5*x[i]) + 1 
@@ -6,7 +6,7 @@ function BIN_U(x)
     return Bins
 end
 
-function BIN_N(x)
+function bin_N(x)
     Bins = zeros(UInt8, 6)
 
     @inbounds for i in eachindex(x)
@@ -36,7 +36,7 @@ function BIN_N(x)
     return Bins
 end
 
-function contingency_table(bu::Vector{UInt8}, bn::Vector{UInt8})
+function tabela_K(bu::Vector{UInt8}, bn::Vector{UInt8})
     T = zeros(Int, 5, 6)
 
     @inbounds @simd for i in eachindex(bu, bn)
