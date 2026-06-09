@@ -39,7 +39,7 @@ end
 function tabela_K(bu::Vector{UInt8}, bn::Vector{UInt8})
     T = zeros(Int, 5, 6)
 
-    @inbounds @simd for i in eachindex(bu, bn)
+    @inbounds for i in eachindex(bu, bn)
         T[bu[i], bn[i]] += 1
     end
 
