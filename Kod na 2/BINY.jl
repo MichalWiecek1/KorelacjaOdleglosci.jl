@@ -7,7 +7,7 @@ function bin_U(x)
 end
 
 function bin_N(x)
-    Bins = zeros(UInt8, length(x))
+    Bins = Vector{UInt8}(undef, length(x)) 
 
     @inbounds for i in eachindex(x)
         xi = x[i]
