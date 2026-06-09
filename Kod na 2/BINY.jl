@@ -7,7 +7,7 @@ function bin_U(x)
 end
 
 function bin_N(x)
-    Bins = zeros(UInt8, 6)
+    Bins = zeros(UInt8, length(x))
 
     @inbounds for i in eachindex(x)
         xi = x[i]
@@ -15,20 +15,20 @@ function bin_N(x)
         if xi < 0
             if xi < -1
                 if xi < -2
-                    Bins[x] = 1
+                    Bins[i] = 1
                 else
-                    Bins[x] = 2
+                    Bins[i] = 2
                 end
             else
-                Bins[x] = 3
+                Bins[i] = 3
             end
         else
             if xi < 1
-                Bins[x] = 4
+                Bins[i] = 4
             elseif xi < 2
-                Bins[x] = 5
+                Bins[i] = 5
             else
-                Bins[x] = 6
+                Bins[i] = 6
             end
         end
     end
