@@ -15,23 +15,33 @@ function BIN_N(x)
         if xi < 0
             if xi < -1
                 if xi < -2
-                    Bins[xi] = 1
+                    Bins[x] = 1
                 else
-                    Bins[xi] = 2
+                    Bins[x] = 2
                 end
             else
-                Bins[xi] = 3
+                Bins[x] = 3
             end
         else
             if xi < 1
-                Bins[xi] = 4
+                Bins[x] = 4
             elseif xi < 2
-                Bins[xi] = 5
+                Bins[x] = 5
             else
-                Bins[xi] = 6
+                Bins[x] = 6
             end
         end
     end
 
     return Bins
+end
+
+function contingency_table(bu::Vector{UInt8}, bn::Vector{UInt8})
+    T = zeros(Int, 5, 6)
+
+    @inbounds @simd for i in eachindex(bu, bn)
+        T[bu[i], bn[i]] += 1
+    end
+
+    return T
 end
