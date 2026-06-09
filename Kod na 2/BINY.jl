@@ -1,13 +1,13 @@
 function bin_U(x)
-    Bins = Vector{UInt8}(undef, length(x)) 
+    Bins = Vector{Int8}(undef, length(x)) 
     @inbounds @simd for i in eachindex(x) 
-        Bins[i] = trunc(UInt8, 5*x[i]) + 1 
+        Bins[i] = trunc(Int8, 5*x[i]) + 1 
     end 
     return Bins
 end
 
 function bin_N(x)
-    Bins = Vector{UInt8}(undef, length(x)) 
+    Bins = Vector{Int8}(undef, length(x)) 
 
     @inbounds for i in eachindex(x)
         xi = x[i]
@@ -36,7 +36,7 @@ function bin_N(x)
     return Bins
 end
 
-function tabela_K(bu::Vector{UInt8}, bn::Vector{UInt8},x,y)
+function tabela_K(bu::Vector{Int8}, bn::Vector{Int8},x,y)
     T = zeros(Int, x, y)
 
     @inbounds for i in eachindex(bu, bn)
