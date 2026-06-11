@@ -36,8 +36,8 @@ function bin_N(x)
     return Bins
 end
 
-function tabela_K(bu::Vector{Int8}, bn::Vector{Int8},x,y)
-    T = zeros(Int, x, y)
+function tabela_K(bu,bn,lu,ln)
+    T = zeros(Int, lu, ln)
 
     @inbounds for i in eachindex(bu, bn)
         T[bu[i], bn[i]] += 1
