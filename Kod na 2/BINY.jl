@@ -36,12 +36,20 @@ function bin_N(x)
     return Bins
 end
 
-function tabela_K(bu,bn,lu,ln)
-    T = zeros(Int, lu, ln)
+function tabela_K(bu,bn)
+    T = zeros(Int, maximum(bu), maximum(bn))
 
     @inbounds for i in eachindex(bu, bn)
         T[bu[i], bn[i]] += 1
     end
 
+    return T
+end
+
+function tabela_K!(T,bu,bn)
+    T .= 0
+    @inbounds for i in eachindex(bu, bn)
+        T[bu[i], bn[i]] += 1
+    end
     return T
 end
