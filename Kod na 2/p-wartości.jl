@@ -1,9 +1,11 @@
 function dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     wektor_B .= 0.0
-    @inbounds for j in 2:n, i in 1:j-1
-        b = abs(y[i] - y[j])
-        wektor_B[i] += b
-        wektor_B[j] += b
+    @inbounds for j in 2:n
+        @simd for i in 1:j-1
+            b = abs(y[i] - y[j])
+            wektor_B[i] += b
+            wektor_B[j] += b
+        end
     end
 
     średnia_B = sum(wektor_B) / n^2
@@ -11,13 +13,15 @@ function dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     dcov_XY = 0.0
     dcov_YY = 0.0
 
-    @inbounds for j in 2:n, i in 1:j-1
-        distA = abs(x[i] - x[j])
-        distB = abs(y[i] - y[j]) 
-        a = distA - wektor_A[i] - wektor_A[j] + średnia_A 
-        b = distB - wektor_B[i] - wektor_B[j] + średnia_B
-        dcov_XY += 2*a*b
-        dcov_YY += 2*b^2
+    @inbounds for j in 2:n
+        @simd for i in 1:j-1
+            distA = abs(x[i] - x[j])
+            distB = abs(y[i] - y[j]) 
+            a = distA - wektor_A[i] - wektor_A[j] + średnia_A 
+            b = distB - wektor_B[i] - wektor_B[j] + średnia_B
+            dcov_XY += 2*a*b
+            dcov_YY += 2*b^2
+        end
     end
     @inbounds for k in 1:n
         a = średnia_A - 2*wektor_A[k]
@@ -34,19 +38,23 @@ function p_value_pre_calc(x,y,iter=1000)
     wektor_B = zeros(Float64, n)
 
     wektor_A = zeros(Float64, n)
-    @inbounds for j in 2:n, i in 1:j-1
-        a = abs(x[i] - x[j])
-        wektor_A[i] += a
-        wektor_A[j] += a
+    @inbounds for j in 2:n
+        @simd for i in 1:j-1
+            a = abs(x[i] - x[j])
+            wektor_A[i] += a
+            wektor_A[j] += a
+        end
     end
     średnia_A = sum(wektor_A) / n^2
     wektor_A ./= n
 
     dcov_XX = 0.0
-    @inbounds for j in 2:n, i in 1:j-1
-        distA = abs(x[i] - x[j])
-        a = distA - wektor_A[i] - wektor_A[j] + średnia_A 
-        dcov_XX += 2*a^2 
+    @inbounds for j in 2:n
+        @simd for i in 1:j-1
+            distA = abs(x[i] - x[j])
+            a = distA - wektor_A[i] - wektor_A[j] + średnia_A 
+            dcov_XX += 2*a^2 
+        end
     end
     @inbounds for k in 1:n
         a = średnia_A - 2*wektor_A[k]
