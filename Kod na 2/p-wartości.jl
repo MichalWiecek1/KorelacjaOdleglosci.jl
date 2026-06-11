@@ -36,8 +36,8 @@ end
 function p_value_pre_calc(x,y,iter=1000)
     n = length(x)
     wektor_B = zeros(Float64, n)
-
     wektor_A = zeros(Float64, n)
+
     @inbounds for j in 2:n
         @simd for i in 1:j-1
             a = abs(x[i] - x[j])
@@ -45,20 +45,18 @@ function p_value_pre_calc(x,y,iter=1000)
             wektor_A[j] += a
         end
     end
+
     średnia_A = sum(wektor_A) / n^2
     wektor_A ./= n
-
     dcov_XX = 0.0
+    
     @inbounds for j in 2:n
-        @simd for i in 1:j-1
-            distA = abs(x[i] - x[j])
-            a = distA - wektor_A[i] - wektor_A[j] + średnia_A 
-            dcov_XX += 2*a^2 
+        @simd for i in 1:j-1 
+            dcov_XX += 2*(abs(x[i] - x[j]) - wektor_A[i] - wektor_A[j] + średnia_A)^2
         end
     end
     @inbounds for k in 1:n
-        a = średnia_A - 2*wektor_A[k]
-        dcov_XX += a^2
+        dcov_XX += (średnia_A - 2*wektor_A[k])^2
     end
 
     stat = dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
