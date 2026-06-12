@@ -1,4 +1,4 @@
-function dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
+function dCor_M_final!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     wektor_B .= 0.0
     @inbounds for j in 2:n
         @simd for i in 1:j-1
@@ -33,7 +33,7 @@ function dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     return dcov_XY / sqrt(dcov_XX * dcov_YY)
 end
 
-function p_value_pre_calc(x,y,iter=1000)
+function p_value_Székely(x,y,iter=1000)
     n = length(x)
     wektor_B = zeros(Float64, n)
     wektor_A = zeros(Float64, n)
@@ -59,11 +59,11 @@ function p_value_pre_calc(x,y,iter=1000)
         dcov_XX += (średnia_A - 2*wektor_A[k])^2
     end
 
-    stat = dCor_M_final_pre_calc!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
+    stat = dCor_M_final!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     hits = 0
     kopia_y = copy(y)
     for _ in 1:iter
-        hits += (dCor_M_final_pre_calc!(x,shuffle!(kopia_y),wektor_A,średnia_A,wektor_B,n,dcov_XX) > stat)
+        hits += (dCor_M_final!(x,shuffle!(kopia_y),wektor_A,średnia_A,wektor_B,n,dcov_XX) > stat)
     end
     return hits / iter
 end
@@ -82,13 +82,13 @@ function p_value_Zhang(x,y,iter=1000)
     n = sum(nij) 
     ni = sum(nij,dims=2)
     nj = sum(nij,dims=1)
-    pipj = ((ni[i] * nj[j])/n for i in 1:length(ni), j in 1:length(nj))
-    stat = sum((e - o)^2 for (e,o) in zip(nij,pipj))
+    pipj = (ni[i] * nj[j] for i in 1:length(ni), j in 1:length(nj))
+    stat = sum((e*n - o)^2 for (e,o) in zip(nij,pipj))
     hits = 0
     kopia_y = copy(y)
     for _ in 1:iter
         nij = tabela_K!(T,x,shuffle!(kopia_y))
-        hits += sum((e - o)^2 for (e,o) in zip(nij,pipj))>stat
+        hits += sum((e*n - o)^2 for (e,o) in zip(nij,pipj))>stat
     end
     return hits / iter
 end
