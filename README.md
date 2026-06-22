@@ -5,4 +5,6 @@
 [![Build Status](https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 [![Coverage](https://codecov.io/gh/MichalWiecek1/KorelacjaOdleglosci.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/MichalWiecek1/KorelacjaOdleglosci.jl)
 
-Poniższy pakiet zawiera implementacje testu niezależności opartego na korelacji odległości, pozwalający na wykrycie zależności liniowych jak i nie liniowych, między zmiennymi.
+
+
+## Poniższy pakiet zawiera implementacje testu niezależności opartego na korelacji odległości, pozwalający na wykrycie zależności liniowych jak i nie liniowych, między zmiennymi.
