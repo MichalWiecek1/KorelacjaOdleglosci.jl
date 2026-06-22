@@ -18,15 +18,16 @@ Zaimplementowane są dwa estymatory korelacji odległości:
 
 using Pkg
 Pkg.add(url="https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl")
+```
 ## Przykłady użycia
-
+```julia
 using KorelacjaOdleglosci
 
 x = rand(100)
 y = x .^ 2
 
 wynik = dCor_M_final(x, y)
-
+```
 
 ## Źródła merytoryczne
 
