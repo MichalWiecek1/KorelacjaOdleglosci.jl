@@ -1,4 +1,5 @@
 function bin_U(x)
+    #Dyzkretyzacja rozkładu jednostajnego(0,1) na 5 grup
     Bins = Vector{Int8}(undef, length(x)) 
     @inbounds @simd for i in eachindex(x) 
         Bins[i] = trunc(Int8, 5*x[i]) + 1 
@@ -7,6 +8,7 @@ function bin_U(x)
 end
 
 function bin_N(x)
+    #Dyzkretyzacja rozkładu normalnego(0,1) na 6 grup
     Bins = Vector{Int8}(undef, length(x)) 
 
     @inbounds for i in eachindex(x)
