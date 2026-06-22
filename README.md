@@ -7,4 +7,6 @@
 
 
 
-## Poniższy pakiet zawiera implementacje testu niezależności opartego na korelacji odległości, pozwalający na wykrycie zależności liniowych jak i nie liniowych, między zmiennymi.
+## Pakiet implementujący test niezależności opartego na korelacji odległości
+
+
