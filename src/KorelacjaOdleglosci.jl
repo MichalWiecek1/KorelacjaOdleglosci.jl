@@ -3,6 +3,25 @@ using Random
 export dCor_Zhang, dCor_M_final, p_value_Székely, p_value_Zhang
 
 function dCor_M_final(x,y)
+    """
+    dCor_M_final(x, y)
+
+    Funkcja licząca estymator Szekely'ego korelacji odległości między zmiennymi/wektorami x i y
+    
+    Argumenty:
+    x::Vector{<:Number}:Pierwszy wektor obserwacji
+    y::Vector{<:Number}:Drugi wektor obserwacji o tej samej długości jak x
+
+    Zwraca:
+    dCor(x,y):Estymator korelacji odległości zmiennych x i y
+
+    Przykład:
+    x = rand(100)
+    y = randn(100)
+
+    dCor = dCor_M_final(x, y)
+    """
+    
     n = length(x)
     wektor_A = zeros(Float64, n)
     wektor_B = zeros(Float64, n)
