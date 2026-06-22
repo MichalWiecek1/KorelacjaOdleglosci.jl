@@ -72,6 +72,24 @@ function tabela_K(bu,bn)
     return T
 end
 function dCor_Zhang(x,y)
+    """
+    dCor_Zhang(x, y)
+
+    Funkcja licząca estymator korelacji odległości Zhang dla zmiennych/wektorów x i y
+    
+    Argumenty:
+    x::Vector{<:UInt}:Pierwszy wektor obserwacji kategorii
+    y::Vector{<:UInt}:Drugi wektor obserwacji kategorii o tej samej długości jak x
+
+    Zwraca:
+    Float64:Estymator korelacji odległości Zhanga dla zmiennych x i y
+
+    Przykład:
+    x = rand(1:5, 100) 
+    y = rand(1:5, 100)
+
+    dCor = dCor_Zhang(x, y)
+    """
     nij = tabela_K(x,y)
     pij = nij ./ sum(nij) 
     pi = sum(pij,dims=2)
@@ -185,8 +203,8 @@ function p_value_Zhang(x,y,iter=1000)
     Funkcja licząca p-wartość testu niezależności wykorzystujący estymator korelacji odległości Zhanga
     
     Argumenty:
-    x::Vector{<:Int}:Pierwszy wektor obserwacji kategorii, wartości od 1 odlicz
-    y::Vector{<:Int}:Drugi wektor obserwacji kategorii o tej samej długości jak x(to samo ograniczenie)
+    x::Vector{<:UInt}:Pierwszy wektor obserwacji kategorii
+    y::Vector{<:UInt}:Drugi wektor obserwacji kategorii o tej samej długości jak x(to samo ograniczenie)
     iter::Int = 1000:Liczba permutacji używanych do estymacji p-wartości
 
     Zwraca:
@@ -194,10 +212,10 @@ function p_value_Zhang(x,y,iter=1000)
     
 
     Przykład:
-    x = rand(100)
-    y = randn(100)
+    x = rand(1:5, 100) 
+    y = rand(1:5, 100) 
 
-    p_value_Székely(x,y,iter=1000)
+    p_value_Zhang(x,y,iter=1000)
     """
     T = zeros(Int64,maximum(x),maximum(y))
     nij = tabela_K!(T,x,y)
