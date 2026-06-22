@@ -14,6 +14,10 @@ Zaimplementowane są dwa estymatory korelacji odległości:
 - estymator Zhanga (2019).
 
 ## Jak zainstalować
+'''julia
+
+using Pkg
+Pkg.add(url="https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl")
 
 ## Przykłady użycia
 
@@ -28,10 +32,8 @@ wynik = dCor_M_final(x, y)
 ## Źródła merytoryczne
 
 - Székely, G. J., Rizzo, M. L., & Bakirov, N. K. (2007).  
-  *Measuring and Testing Dependence by Correlation of Distances*. Annals of Statistics.  
-  https://doi.org/10.1214/009053607000000505  
+  *Measuring and Testing Dependence by Correlation of Distances*. Annals of Statistics.    
 
 - Zhang, Q. (2019).  
   *Independence test for large sparse contingency tables based on distance correlation*.  
-  https://doi.org/10.1080/01621459.2017.1356312
 
