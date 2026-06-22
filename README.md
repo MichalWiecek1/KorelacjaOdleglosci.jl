@@ -26,7 +26,20 @@ using KorelacjaOdleglosci
 x = rand(100)
 y = x .^ 2
 
-wynik = dCor_M_final(x, y)
+dCor = dCor_M_final(x, y)
+p = p_value_Székely(x, y,1000)
+
+```
+
+```julia
+using KorelacjaOdleglosci
+
+x = rand(100)
+y = x .^ 2
+
+dCor = dCor_M_final(x, y)
+p = p_value_Székely(x, y,1000)
+
 ```
 
 ## Źródła merytoryczne
