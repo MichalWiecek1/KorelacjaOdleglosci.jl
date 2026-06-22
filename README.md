@@ -20,6 +20,7 @@ using Pkg
 Pkg.add(url="https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl")
 ```
 ## Przykłady użycia
+1.Estymator Szekyly'ego
 ```julia
 using KorelacjaOdleglosci
 
@@ -30,7 +31,7 @@ dCor = dCor_M_final(x, y)
 p = p_value_Székely(x, y, 1000)
 
 ```
-
+2.Estymator Zhanga
 ```julia
 using KorelacjaOdleglosci
 
