@@ -14,11 +14,10 @@ Zaimplementowane są dwa estymatory korelacji odległości:
 - estymator Zhanga (2019).
 
 ## Jak zainstalować
-'''julia
+```julia
 
 using Pkg
 Pkg.add(url="https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl")
-
 ## Przykłady użycia
 
 using KorelacjaOdleglosci
