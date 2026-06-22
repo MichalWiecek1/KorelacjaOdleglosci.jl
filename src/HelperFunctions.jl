@@ -1,3 +1,6 @@
+using Random
+using Statistics
+
 function bin_U(x)
     #Dyzkretyzacja rozkładu jednostajnego(0,1) na 5 grup
     Bins = Vector{Int8}(undef, length(x)) 
