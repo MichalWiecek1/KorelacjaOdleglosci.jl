@@ -43,23 +43,17 @@ function dCor_M_final(x,y)
     return dcov_XY / sqrt(dcov_XX * dcov_YY)
 end
 
-function tabela(x, y)
-    ux = unique(x)
-    uy = unique(y)
-    map_x = Dict(val => i for (i, val) in enumerate(ux))
-    map_y = Dict(val => i for (i, val) in enumerate(uy))
-    tabela = zeros(Int, length(ux), length(uy))
-    for (u, v) in zip(x, y)
-        i = map_x[u]
-        j = map_y[v]
-        tabela[i, j] += 1
+function tabela_K(bu,bn)
+    T = zeros(Int, maximum(bu), maximum(bn))
+    @inbounds for i in eachindex(bu, bn)
+        T[bu[i], bn[i]] += 1
     end
-    return tabela
+
+    return T
 end
 function dCor_Zhang(x,y)
-    nij = tabela(x,y)
-    n = sum(nij)
-    pij = nij ./ n 
+    nij = tabela_K(x,y)
+    pij = nij ./ sum(nij) 
     pi = sum(pij,dims=2)
     pj = sum(pij,dims=1)
     pipj = (pi[i] * pj[j] for i in 1:length(pi), j in 1:length(pj))
