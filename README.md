@@ -12,7 +12,7 @@ Zaimplementowane są dwa testy niezależności oparte na różnych estymatorach 
 - estymator Zhanga (2019).
 
 ## Przykłady użycia
-1.Estymator Szekyly'ego
+1.Estymator Szekely'ego
 ```julia
 using KorelacjaOdleglosci
 
