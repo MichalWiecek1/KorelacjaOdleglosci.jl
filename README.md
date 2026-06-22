@@ -7,6 +7,20 @@
 
 
 
-## Pakiet implementujący test niezależności opartego na korelacji odległości
+## Pakiet implementujący test niezależności oparty na korelacji odległości
+
+Ten projekt zawiera implementację testu niezależności opartego na korelacji odległościowej.
+
+Zawiera on dwie interpretację, estymatorów korelacji odległościowej:
+-Szekely'ego(2007)
+-Zhanga(2019)
+
+###Przykład użycia
+using KorelacjaOdleglosci
+
+x = rand(100)
+y = x .^ 2
+
+wynik = dCor_M_final(x, y)
 
 
