@@ -5,15 +5,17 @@
 [![Build Status](https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 [![Coverage](https://codecov.io/gh/MichalWiecek1/KorelacjaOdleglosci.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/MichalWiecek1/KorelacjaOdleglosci.jl)
 
-## Opis
+## Pakiet implementujący test niezależności oparty na korelacji odległości
 
-Pakiet **KorelacjaOdleglosci.jl** zawiera implementację testu niezależności opartego na korelacji odległości (distance correlation).
+Pakiet zawiera implementację testu niezależności opartego na korelacji odległości.
 
 Zaimplementowane są dwa estymatory korelacji odległości:
 - estymator Szekely’ego (2007),
 - estymator Zhanga (2019).
 
-## Przykład użycia
+## Jak zainstalować
+
+## Przykłady użycia
 
 using KorelacjaOdleglosci
 
@@ -21,4 +23,13 @@ x = rand(100)
 y = x .^ 2
 
 wynik = dCor_M_final(x, y)
+
+
+## Źródła merytoryczne
+
+-Székely, G. J., Rizzo, M. L., & Bakirov, N. K. (2007).  
+  *Measuring and Testing Dependence by Correlation of Distances*. Annals of Statistics. 
+
+-Qingyang Zhang(2007)
+  *Independence test for large sparse contingency tables based on distance correlation*
 
