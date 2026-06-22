@@ -7,18 +7,10 @@
 
 ## Pakiet implementujący test niezależności oparty na korelacji odległości
 
-Pakiet zawiera implementację testu niezależności opartego na korelacji odległości.
-
-Zaimplementowane są dwa estymatory korelacji odległości:
+Zaimplementowane są dwa testy niezależności oparte na różnych estymatorach korelacji odległości:
 - estymator Szekely’ego (2007),
 - estymator Zhanga (2019).
 
-## Jak zainstalować
-```julia
-
-using Pkg
-Pkg.add(url="https://github.com/MichalWiecek1/KorelacjaOdleglosci.jl")
-```
 ## Przykłady użycia
 1.Estymator Szekyly'ego
 ```julia
