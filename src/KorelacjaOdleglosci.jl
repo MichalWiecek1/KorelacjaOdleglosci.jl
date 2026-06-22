@@ -13,7 +13,7 @@ function dCor_M_final(x,y)
     y::Vector{<:Number}:Drugi wektor obserwacji o tej samej długości jak x
 
     Zwraca:
-    dCor(x,y):Estymator korelacji odległości zmiennych x i y
+    Float64:Estymator korelacji odległości zmiennych x i y
 
     Przykład:
     x = rand(100)
@@ -118,6 +118,25 @@ function dCor_M_final!(x,y,wektor_A,średnia_A,wektor_B,n,dcov_XX)
     return dcov_XY / sqrt(dcov_XX * dcov_YY)
 end
 function p_value_Székely(x,y,iter=1000)
+    """
+    p_value_Székely(x,y,iter=1000)
+
+    Funkcja licząca p-wartość testu niezależności wykorzystujący estymator korelacji odległości Szekely'ego
+    
+    Argumenty:
+    x::Vector{<:Number}:Pierwszy wektor obserwacji
+    y::Vector{<:Number}:Drugi wektor obserwacji o tej samej długości jak x
+    iter::Int = 1000:Liczba permutacji używanych do estymacji p-wartości
+
+    Zwraca:
+    Float64:Estymowana p-wartość testu niezależności wektorów x i y
+
+    Przykład:
+    x = rand(100)
+    y = randn(100)
+
+    p_value_Székely(x,y,iter=1000)
+    """
     n = length(x)
     wektor_B = zeros(Float64, n)
     wektor_A = zeros(Float64, n)
@@ -160,6 +179,26 @@ function tabela_K!(T,bu,bn)
     return T
 end
 function p_value_Zhang(x,y,iter=1000)
+    """
+    p_value_Zhang(x,y,iter=1000)
+
+    Funkcja licząca p-wartość testu niezależności wykorzystujący estymator korelacji odległości Zhanga
+    
+    Argumenty:
+    x::Vector{<:Int}:Pierwszy wektor obserwacji kategorii, wartości od 1 odlicz
+    y::Vector{<:Int}:Drugi wektor obserwacji kategorii o tej samej długości jak x(to samo ograniczenie)
+    iter::Int = 1000:Liczba permutacji używanych do estymacji p-wartości
+
+    Zwraca:
+    Float64:Estymowana p-wartość testu niezależności wektorów x i y
+    
+
+    Przykład:
+    x = rand(100)
+    y = randn(100)
+
+    p_value_Székely(x,y,iter=1000)
+    """
     T = zeros(Int64,maximum(x),maximum(y))
     nij = tabela_K!(T,x,y)
     n = sum(nij) 
