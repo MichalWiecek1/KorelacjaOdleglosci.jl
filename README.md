@@ -27,9 +27,11 @@ wynik = dCor_M_final(x, y)
 
 ## Źródła merytoryczne
 
--Székely, G. J., Rizzo, M. L., & Bakirov, N. K. (2007).  
-  *Measuring and Testing Dependence by Correlation of Distances*. Annals of Statistics. 
+- Székely, G. J., Rizzo, M. L., & Bakirov, N. K. (2007).  
+  *Measuring and Testing Dependence by Correlation of Distances*. Annals of Statistics.  
+  https://doi.org/10.1214/009053607000000505  
 
--Qingyang Zhang(2007)
-  *Independence test for large sparse contingency tables based on distance correlation*
+- Zhang, Q. (2019).  
+  *Independence test for large sparse contingency tables based on distance correlation*.  
+  https://doi.org/10.1080/01621459.2017.1356312
 
