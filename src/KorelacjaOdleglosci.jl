@@ -1,4 +1,5 @@
 module KorelacjaOdleglosci
+using Random
 export dCor_Zhang dCor_M_final p_value_Székely  p_value_Zhang
 
 function dCor_M_final(x,y)
