@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.12.5"
+julia_version = "1.12.6"
 manifest_format = "2.0"
-project_hash = "f92c373b1abdf7492fac42df115dbec667f4baa5"
+project_hash = "68b1a44405dcf660c76e2311263e5d5f7a6fd248"
 
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
@@ -305,6 +305,12 @@ version = "3.1.5+0"
 deps = ["StyledStrings"]
 uuid = "ac6e5ff7-fb65-4e79-a425-ec3bc9c03011"
 version = "1.12.0"
+
+[[deps.KorelacjaOdleglosci]]
+deps = ["Plots", "Random", "Statistics"]
+path = "."
+uuid = "bf55eb88-8775-48fd-be22-730c2136c312"
+version = "1.0.0-DEV"
 
 [[deps.LAME_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
